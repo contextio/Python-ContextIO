@@ -1,5 +1,7 @@
 import logging
 
+from six import text_type
+
 from contextio.lib.resources.base_resource import BaseResource
 
 
@@ -49,7 +51,7 @@ class ConnectToken(BaseResource):
         # yes this is gross
         if account is not None and len(account) > 0:
             pass
-            if isinstance(account, basestring):
+            if isinstance(account, (bytes, text_type)):
                 account_details = {"id": account}
             else:
                 account_details = account

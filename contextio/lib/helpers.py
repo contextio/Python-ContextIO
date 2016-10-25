@@ -105,7 +105,7 @@ def sanitize_params(params, all_args, required_args=None):
 
     # remove any arguments not recognized
     cleaned_args = {}
-    for key, val in params.iteritems():
+    for key, val in params.items():
         if key in all_args and val is not None:
             cleaned_args[key] = val
         elif key in all_args and val is None:
