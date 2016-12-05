@@ -1,6 +1,7 @@
 from contextio.lib.api import Api
 from contextio.lib import helpers
 from contextio.lib.resources.account import Account
+from contextio.lib.resources.webhook import WebHook
 
 
 class V2_0(Api):
@@ -185,5 +186,5 @@ class V2_0(Api):
         params = helpers.sanitize_params(params, all_args, req_args)
         return super(V2_0, self).post_connect_token(**params)
 
-
-
+    def get_webhooks(self):
+        return [WebHook(self, obj) for obj in self._request_uri("webhooks")]

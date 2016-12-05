@@ -4,6 +4,7 @@ from contextio.lib.v2_0 import V2_0
 
 from contextio.lib import errors
 from contextio.lib.resources.account import Account
+from contextio.lib.resources.webhook import WebHook
 from contextio.lib.resources.connect_token import ConnectToken
 from contextio.lib.resources.discovery import Discovery
 from contextio.lib.resources.oauth_provider import OauthProvider
@@ -99,4 +100,10 @@ class TestV2_0(unittest.TestCase):
         with self.assertRaises(errors.ArgumentError):
             self.api.post_oauth_provider()
 
+    @mock.patch("contextio.lib.api.Api._request_uri")
+    def test_get_webhooks_returns_list_of_WebHook_resources(self, mock_request):
+        mock_request.return_value = [{"webhook_id": "some_id"}]
+        webhooks = self.api.get_webhooks()
 
+        self.assertEqual(1, len(webhooks))
+        self.assertIsInstance(webhooks[0], WebHook)
