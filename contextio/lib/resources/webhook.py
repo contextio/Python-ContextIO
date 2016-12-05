@@ -60,7 +60,7 @@ class WebHook(BaseResource):
         "webhook_id", "filter_to", "filter_from", "filter_cc",
         "filter_subject", "filter_thread", "filter_new_important",
         "filter_file_name", "filter_folder_added", "filter_folder_removed",
-        "filter_to_domain", "filter_from_domain"
+        "filter_to_domain", "filter_from_domain", "developer_id", "version"
     ]
 
     def __init__(self, parent, defn):
@@ -116,6 +116,3 @@ class WebHook(BaseResource):
             Bool
         """
         return super(WebHook, self).delete()
-
-
-
