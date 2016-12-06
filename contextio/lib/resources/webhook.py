@@ -60,7 +60,7 @@ class WebHook(BaseResource):
         "webhook_id", "filter_to", "filter_from", "filter_cc",
         "filter_subject", "filter_thread", "filter_new_important",
         "filter_file_name", "filter_folder_added", "filter_folder_removed",
-        "filter_to_domain", "filter_from_domain", "developer_id", "version"
+        "filter_to_domain", "filter_from_domain", "version"
     ]
 
     def __init__(self, parent, defn):
