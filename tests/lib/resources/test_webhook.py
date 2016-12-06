@@ -24,3 +24,4 @@ class TestWebHook(unittest.TestCase):
         self.assertTrue(hasattr(webhook, "filter_folder_removed"))
         self.assertTrue(hasattr(webhook, "filter_to_domain"))
         self.assertTrue(hasattr(webhook, "filter_from_domain"))
+        self.assertTrue(hasattr(webhook, "version"))

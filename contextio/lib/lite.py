@@ -1,5 +1,6 @@
 from contextio.lib.helpers import sanitize_params, check_for_account_credentials
 from contextio.lib.resources.user import User
+from contextio.lib.resources.webhook import WebHook
 
 from contextio.lib.api import Api
 
@@ -31,3 +32,18 @@ class Lite(Api):
         params = sanitize_params(kwargs, all_args, req_args)
 
         return super(Lite, self).post_connect_token(**params)
+
+    def get_webhooks(self):
+        return [WebHook(self, obj) for obj in self._request_uri("webhooks")]
+
+    def post_webhook(self, **kwargs):
+        req_args = ["callback_url", "failure_notif_url"]
+        all_args = ["callback_url", "failure_notif_url", "filter_to", "filter_from", "filter_cc",
+            "filter_subject", "filter_thread", "filter_new_important",
+            "filter_file_name", "filter_folder_added",
+            "filter_to_domain", "filter_from_domain"
+        ]
+
+        params = sanitize_params(kwargs, all_args, req_args)
+
+        return self._request_uri("webhooks", method="POST", params=params)
