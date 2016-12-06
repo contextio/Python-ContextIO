@@ -4,6 +4,7 @@ from contextio.lib.lite import Lite
 
 from contextio.lib import errors
 from contextio.lib.resources.user import User
+from contextio.lib.resources.webhook import WebHook
 
 class TestLite(unittest.TestCase):
     def setUp(self):
@@ -39,3 +40,26 @@ class TestLite(unittest.TestCase):
 
         self.assertEqual(connect_token_request, {"token": "fake_token"})
 
+    @mock.patch("contextio.lib.api.Api._request_uri")
+    def test_get_webhooks_returns_list_of_WebHook_resources(self, mock_request):
+        mock_request.return_value = [{"webhook_id": "some_id"}]
+        webhooks = self.api.get_webhooks()
+
+        self.assertEqual(1, len(webhooks))
+        self.assertIsInstance(webhooks[0], WebHook)
+
+    @mock.patch("contextio.lib.api.Api._request_uri")
+    def test_post_webhook_returns_success(self, mock_request):
+        mock_request.return_value = {"success": "true"}
+
+        webhook = self.api.post_webhook(callback_url="http://callba.ck", failure_notif_url="http://callba.ck")
+
+        self.assertEqual(1, len(webhook))
+        self.assertEqual({"success": "true"}, webhook)
+
+    @mock.patch("contextio.lib.api.Api._request_uri")
+    def test_post_webhook_requires_callback_url(self, mock_request):
+        mock_request.return_value = {"success": "false"}
+
+        with self.assertRaises(errors.ArgumentError):
+            self.api.post_webhook()
