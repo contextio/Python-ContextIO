@@ -1,8 +1,10 @@
+from __future__ import absolute_import
+
 from datetime import datetime
 import logging
 import re
 
-from contextio.lib.errors import ArgumentError
+from .errors import ArgumentError
 
 def to_underscore(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)

@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 import logging
 
-from contextio.lib import helpers
-from contextio.lib.resources.base_resource import BaseResource
-from contextio.lib.resources.connect_token import ConnectToken
-from contextio.lib.resources.folder import Folder
+from .. import helpers
+from .base_resource import BaseResource
+from .connect_token import ConnectToken
+from .folder import Folder
 
 class Source(BaseResource):
     """Class to represent the Source resource.

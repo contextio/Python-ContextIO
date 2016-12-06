@@ -1,10 +1,11 @@
+from __future__ import absolute_import
 import logging
 
-from contextio.lib import helpers
-from contextio.lib.resources.base_resource import BaseResource
-from contextio.lib.resources.file import File
-from contextio.lib.resources.message import Message
-from contextio.lib.resources.thread import Thread
+from .. import helpers
+from .base_resource import BaseResource
+from .file import File
+from .message import Message
+from .thread import Thread
 
 class Contact(BaseResource):
     """Class to represent the Contact resource.

@@ -1,7 +1,9 @@
-from contextio.lib.api import Api
-from contextio.lib import helpers
-from contextio.lib.resources.account import Account
-from contextio.lib.resources.webhook import WebHook
+from __future__ import absolute_import
+
+from .api import Api
+from .helpers import sanitize_params
+from .resources.account import Account
+from .resources.webhook import WebHook
 
 
 class V2_0(Api):
@@ -35,7 +37,7 @@ class V2_0(Api):
         """
         all_args = ["email", "status", "status_ok", "limit", "offset"]
 
-        params = helpers.sanitize_params(params, all_args)
+        params = sanitize_params(params, all_args)
         return [Account(self, obj) for obj in self._request_uri("accounts", params=params)]
 
     def post_account(self, **params):
@@ -119,7 +121,7 @@ class V2_0(Api):
             "provider_refresh_token", "provider_consumer_key", "callback_url", "status_callback_url"
         ]
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
 
         return Account(self, self._request_uri("accounts", method="POST", params=params))
 
@@ -183,7 +185,7 @@ class V2_0(Api):
             "source_sync_flags", "source_raw_file_list", "status_callback_url"
         ]
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
         return super(V2_0, self).post_connect_token(**params)
 
     def get_webhooks(self):
@@ -197,6 +199,6 @@ class V2_0(Api):
             "filter_to_domain", "filter_from_domain"
         ]
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
 
         return self._request_uri("webhooks", method="POST", params=params)

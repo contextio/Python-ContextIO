@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import logging
 
-from contextio.lib.resources.base_resource import BaseResource
+from .base_resource import BaseResource
 
 class WebHook(BaseResource):
     """Class to represent the WebHook resource.
