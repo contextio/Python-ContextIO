@@ -1,8 +1,10 @@
-from contextio.lib.helpers import sanitize_params, check_for_account_credentials
-from contextio.lib.resources.user import User
-from contextio.lib.resources.webhook import WebHook
+from __future__ import absolute_import
 
-from contextio.lib.api import Api
+from .helpers import sanitize_params, check_for_account_credentials
+from .resources.user import User
+from .resources.webhook import WebHook
+
+from .api import Api
 
 class Lite(Api):
     def get_users(self, **kwargs):

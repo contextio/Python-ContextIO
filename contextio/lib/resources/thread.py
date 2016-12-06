@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+
 import logging
 
-from contextio.lib.resources.base_resource import BaseResource
+from .base_resource import BaseResource
 
 class Thread(BaseResource):
     """Class to represent the thread resource.

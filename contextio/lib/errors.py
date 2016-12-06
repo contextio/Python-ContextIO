@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from requests.exceptions import HTTPError
 
 class ArgumentError(Exception):

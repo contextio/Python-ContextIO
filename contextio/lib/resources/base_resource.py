@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import functools
 import logging
 import six
@@ -7,8 +9,8 @@ if six.PY2:
 else:
     from urllib.parse import quote
 
-from contextio.lib import helpers
-from contextio.lib.errors import MissingResourceId
+from .. import helpers
+from ..errors import MissingResourceId
 
 no_resource_id_required = ["BaseResource", "Discovery"]
 

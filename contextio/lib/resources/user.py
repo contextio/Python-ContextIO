@@ -1,8 +1,10 @@
-from contextio.lib.helpers import sanitize_params, check_for_account_credentials
-from contextio.lib.resources.base_resource import BaseResource
-from contextio.lib.resources.connect_token import ConnectToken
-from contextio.lib.resources.email_account import EmailAccount
-from contextio.lib.resources.webhook import WebHook
+from __future__ import absolute_import
+
+from ..helpers import sanitize_params, check_for_account_credentials
+from .base_resource import BaseResource
+from .connect_token import ConnectToken
+from .email_account import EmailAccount
+from .webhook import WebHook
 
 
 class User(BaseResource):

@@ -1,8 +1,10 @@
+from __future__ import absolute_import
+
 from datetime import datetime
 import logging
 import re
 
-from contextio.lib.errors import ArgumentError
+from .errors import ArgumentError
 
 def to_underscore(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
@@ -105,7 +107,7 @@ def sanitize_params(params, all_args, required_args=None):
 
     # remove any arguments not recognized
     cleaned_args = {}
-    for key, val in params.iteritems():
+    for key, val in params.items():
         if key in all_args and val is not None:
             cleaned_args[key] = val
         elif key in all_args and val is None:
