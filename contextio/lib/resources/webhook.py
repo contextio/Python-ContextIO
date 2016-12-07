@@ -100,10 +100,13 @@ class WebHook(BaseResource):
         Returns:
             Bool
         """
-        req_args = ["active"]
-        all_args = ["active"]
+        all_args = ["callback_url", "failure_notif_url", "active",
+        "filter_to", "filter_from", "filter_cc",
+        "filter_subject", "filter_thread", "filter_new_important",
+        "filter_file_name", "filter_folder_added", "filter_folder_removed",
+        "filter_to_domain", "filter_from_domain"]
 
-        return super(WebHook, self).post(params=params, all_args=all_args, required_args=req_args)
+        return super(WebHook, self).post(params=params, all_args=all_args)
 
     def delete(self):
         """Delete a webhook.
