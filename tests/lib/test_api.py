@@ -2,6 +2,7 @@ import json
 import mock
 import unittest
 from rauth import OAuth1Session
+from six import PY3
 
 from contextio.lib.api import Api
 from contextio.lib.errors import RequestError
@@ -95,6 +96,7 @@ class TestApi(unittest.TestCase):
 
         mock_session.return_value.request = mock.Mock()
         mock_request = mock_session.return_value.request
+        mock_request.return_value = mock.Mock(status_code=400)
 
         self.api = Api(consumer_key="foo", consumer_secret="bar")
 
@@ -116,6 +118,7 @@ class TestApi(unittest.TestCase):
         with self.assertRaises(RequestError):
             self.api._request_uri("catpants")
 
+    @unittest.skipIf(PY3, "Only python2 will implicitly raise UnicodeDecodeError")
     @mock.patch("contextio.lib.api.OAuth1Session")
     def test_request_uri_returns_response_content_if_UnicodeDecodeError_raised(self, mock_session):
         mock_request = mock_session.return_value.request.return_value

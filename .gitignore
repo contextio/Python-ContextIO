@@ -6,3 +6,6 @@
 
 **/ignore*
 .coverage
+.tox/
+contextio.egg-info/
+dist/

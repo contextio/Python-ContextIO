@@ -107,11 +107,13 @@ class BaseResource(object):
         params = helpers.sanitize_params(params, all_args, required_args)
         response = self._request_uri(uri, method="POST", params=params, headers=headers)
 
-        if return_bool:
+        if return_bool is True:
             if 'success' in response:
                 return bool(response.get('success', False))
             if 'status' in response:
                 return True if response.get('status') == 'OK' else False
+
+            return False
 
         return response
 

@@ -147,7 +147,7 @@ class TestBaseResource(unittest.TestCase):
 
     @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
     def test_post_returns_false_if_success_is_false(self, mock_request):
-        mock_request.return_value = {"nope": 'false'}
+        mock_request.return_value = {"nope": False}
         base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
         response = base_resource.post()
 
