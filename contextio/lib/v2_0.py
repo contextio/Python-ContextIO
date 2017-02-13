@@ -1,6 +1,9 @@
-from contextio.lib.api import Api
-from contextio.lib import helpers
-from contextio.lib.resources.account import Account
+from __future__ import absolute_import
+
+from .api import Api
+from .helpers import sanitize_params
+from .resources.account import Account
+from .resources.webhook import WebHook
 
 
 class V2_0(Api):
@@ -34,7 +37,7 @@ class V2_0(Api):
         """
         all_args = ["email", "status", "status_ok", "limit", "offset"]
 
-        params = helpers.sanitize_params(params, all_args)
+        params = sanitize_params(params, all_args)
         return [Account(self, obj) for obj in self._request_uri("accounts", params=params)]
 
     def post_account(self, **params):
@@ -118,7 +121,7 @@ class V2_0(Api):
             "provider_refresh_token", "provider_consumer_key", "callback_url", "status_callback_url"
         ]
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
 
         return Account(self, self._request_uri("accounts", method="POST", params=params))
 
@@ -182,8 +185,20 @@ class V2_0(Api):
             "source_sync_flags", "source_raw_file_list", "status_callback_url"
         ]
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
         return super(V2_0, self).post_connect_token(**params)
 
+    def get_webhooks(self):
+        return [WebHook(self, obj) for obj in self._request_uri("webhooks")]
 
+    def post_webhook(self, **params):
+        req_args = ["callback_url", "failure_notif_url"]
+        all_args = ["callback_url", "failure_notif_url", "filter_to", "filter_from", "filter_cc",
+            "filter_subject", "filter_thread", "filter_new_important",
+            "filter_file_name", "filter_folder_added", "filter_folder_removed",
+            "filter_to_domain", "filter_from_domain"
+        ]
 
+        params = sanitize_params(params, all_args, req_args)
+
+        return self._request_uri("webhooks", method="POST", params=params)

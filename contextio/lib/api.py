@@ -1,13 +1,15 @@
+from __future__ import absolute_import
+
 import pkg_resources
 import logging
 import six
 from rauth import OAuth1Session
 
-from contextio.lib import helpers
-from contextio.lib.errors import RequestError
-from contextio.lib.resources.connect_token import ConnectToken
-from contextio.lib.resources.discovery import Discovery
-from contextio.lib.resources.oauth_provider import OauthProvider
+from .helpers import sanitize_params
+from .errors import RequestError
+from .resources.connect_token import ConnectToken
+from .resources.discovery import Discovery
+from .resources.oauth_provider import OauthProvider
 
 class Api(object):
 
@@ -202,7 +204,7 @@ class Api(object):
 
         all_args = req_args = ['source_type', 'email']
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
 
         return Discovery(self, self._request_uri('discovery', params=params))
 
@@ -237,6 +239,6 @@ class Api(object):
         """
         all_args = req_args = ["type", "provider_consumer_key", "provider_consumer_secret"]
 
-        params = helpers.sanitize_params(params, all_args, req_args)
+        params = sanitize_params(params, all_args, req_args)
 
         return self._request_uri("oauth_providers", method="POST", params=params)

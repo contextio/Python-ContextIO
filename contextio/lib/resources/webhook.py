@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import logging
 
-from contextio.lib.resources.base_resource import BaseResource
+from .base_resource import BaseResource
 
 class WebHook(BaseResource):
     """Class to represent the WebHook resource.
@@ -60,7 +61,7 @@ class WebHook(BaseResource):
         "webhook_id", "filter_to", "filter_from", "filter_cc",
         "filter_subject", "filter_thread", "filter_new_important",
         "filter_file_name", "filter_folder_added", "filter_folder_removed",
-        "filter_to_domain", "filter_from_domain"
+        "filter_to_domain", "filter_from_domain", "version"
     ]
 
     def __init__(self, parent, defn):
@@ -99,10 +100,13 @@ class WebHook(BaseResource):
         Returns:
             Bool
         """
-        req_args = ["active"]
-        all_args = ["active"]
+        all_args = ["callback_url", "failure_notif_url", "active",
+        "filter_to", "filter_from", "filter_cc",
+        "filter_subject", "filter_thread", "filter_new_important",
+        "filter_file_name", "filter_folder_added", "filter_folder_removed",
+        "filter_to_domain", "filter_from_domain"]
 
-        return super(WebHook, self).post(params=params, all_args=all_args, required_args=req_args)
+        return super(WebHook, self).post(params=params, all_args=all_args)
 
     def delete(self):
         """Delete a webhook.
@@ -116,6 +120,3 @@ class WebHook(BaseResource):
             Bool
         """
         return super(WebHook, self).delete()
-
-
-

@@ -1,8 +1,9 @@
+from __future__ import absolute_import
 import logging
 
-from contextio.lib import helpers
-from contextio.lib.resources.base_resource import BaseResource
-from contextio.lib.resources.message import Message
+from .. import helpers
+from .base_resource import BaseResource
+from .message import Message
 
 
 class Folder(BaseResource):

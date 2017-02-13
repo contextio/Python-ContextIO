@@ -102,4 +102,3 @@ class TestHelpers(unittest.TestCase):
         #     raise ArgumentError(
         #         "You must provide either a 'password' or a 'provider_refresh_token'"
         #         " and a 'provider_consumer_key'")
-

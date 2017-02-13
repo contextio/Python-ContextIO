@@ -1,15 +1,17 @@
+from __future__ import absolute_import
+
 import logging
 
-from contextio.lib import helpers
-from contextio.lib.resources.base_resource import BaseResource
-from contextio.lib.resources.source import Source
-from contextio.lib.resources.connect_token import ConnectToken
-from contextio.lib.resources.contact import Contact
-from contextio.lib.resources.email_address import EmailAddress
-from contextio.lib.resources.thread import Thread
-from contextio.lib.resources.webhook import WebHook
-from contextio.lib.resources.file import File
-from contextio.lib.resources.message import Message
+from .. import helpers
+from .base_resource import BaseResource
+from .source import Source
+from .connect_token import ConnectToken
+from .contact import Contact
+from .email_address import EmailAddress
+from .thread import Thread
+from .webhook import WebHook
+from .file import File
+from .message import Message
 
 
 class Account(BaseResource):

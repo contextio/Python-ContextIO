@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
-from contextio.lib.v2_0 import V2_0
-from contextio.lib.lite import Lite
+from .lib.v2_0 import V2_0
+from .lib.lite import Lite
 
 
 def ContextIO(consumer_key, consumer_secret, **kwargs):

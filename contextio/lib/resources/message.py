@@ -1,9 +1,7 @@
-import logging
-
-from contextio.lib import helpers
-from contextio.lib.resources.base_resource import BaseResource, only
-from contextio.lib.resources.file import File
-from contextio.lib.resources.thread import Thread
+from .. import helpers
+from .base_resource import BaseResource, only
+from .file import File
+from .thread import Thread
 
 
 class Message(BaseResource):

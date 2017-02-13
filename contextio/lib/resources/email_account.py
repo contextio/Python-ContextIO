@@ -1,6 +1,7 @@
-from contextio.lib.resources.base_resource import BaseResource
-from contextio.lib.resources.connect_token import ConnectToken
-from contextio.lib.resources.folder import Folder
+from __future__ import absolute_import
+from .base_resource import BaseResource
+from .connect_token import ConnectToken
+from .folder import Folder
 
 class EmailAccount(BaseResource):
     resource_id = "label"
