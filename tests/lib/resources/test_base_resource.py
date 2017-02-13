@@ -127,14 +127,7 @@ class TestBaseResource(unittest.TestCase):
         base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
         response = base_resource.delete()
 
-        self.assertEqual(True, response)
-
-    # @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
-    # def test_post_sends_post_request_with_defaults_to_resource_base_uri(self, mock_request):
-    #     base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
-    #     base_resource.post()
-
-    #     mock_request.assert_called_with('', headers={}, method='POST', params={})
+        self.assertTrue(response)
 
     @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
     def test_post_returns_boolean_by_default(self, mock_request):
@@ -142,7 +135,23 @@ class TestBaseResource(unittest.TestCase):
         base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
         response = base_resource.post()
 
-        self.assertEqual(True, response)
+        self.assertTrue(response)
+
+    @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
+    def test_post_returns_false_if_success_not_in_response(self, mock_request):
+        mock_request.return_value = {"nope": True}
+        base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
+        response = base_resource.post()
+
+        self.assertFalse(response)
+
+    @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
+    def test_post_returns_false_if_success_is_false(self, mock_request):
+        mock_request.return_value = {"nope": 'false'}
+        base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
+        response = base_resource.post()
+
+        self.assertFalse(response)
 
     @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
     def test_post_returns_body_of_response_if_return_bool_False(self, mock_request):
@@ -151,4 +160,3 @@ class TestBaseResource(unittest.TestCase):
         response = base_resource.post(return_bool=False)
 
         self.assertEqual({"success": True}, response)
-
