@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from .contextio import ContextIO
 
-#resource registry
+# resource registry
 from .lib.resources.account import Account
 from .lib.resources.connect_token import ConnectToken
 from .lib.resources.contact import Contact
