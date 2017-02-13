@@ -108,7 +108,10 @@ class BaseResource(object):
         response = self._request_uri(uri, method="POST", params=params, headers=headers)
 
         if return_bool:
-            return bool(response.get('success', False))
+            if 'success' in response:
+                return bool(response.get('success', False))
+            if 'status' in response:
+                return True if response.get('status') == 'OK' else False
 
         return response
 

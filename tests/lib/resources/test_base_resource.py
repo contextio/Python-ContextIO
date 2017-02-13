@@ -123,7 +123,7 @@ class TestBaseResource(unittest.TestCase):
 
     @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
     def test_delete_returns_boolean(self, mock_request):
-        mock_request.return_value = {"success": 'true'}
+        mock_request.return_value = {"success": True}
         base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
         response = base_resource.delete()
 
@@ -131,7 +131,7 @@ class TestBaseResource(unittest.TestCase):
 
     @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
     def test_post_returns_boolean_by_default(self, mock_request):
-        mock_request.return_value = {"success": 'true'}
+        mock_request.return_value = {"success": True}
         base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
         response = base_resource.post()
 
@@ -139,7 +139,7 @@ class TestBaseResource(unittest.TestCase):
 
     @patch("contextio.lib.resources.base_resource.BaseResource._request_uri")
     def test_post_returns_false_if_success_not_in_response(self, mock_request):
-        mock_request.return_value = {"nope": 'true'}
+        mock_request.return_value = {"nope": True}
         base_resource = BaseResource(Mock(), "test/{id}", {"id": "fake_id"})
         response = base_resource.post()
 
