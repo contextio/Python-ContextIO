@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+from .. import helpers
+from ..errors import MissingResourceId
 import functools
 import logging
 import six
@@ -9,10 +11,8 @@ if six.PY2:
 else:
     from urllib.parse import quote
 
-from .. import helpers
-from ..errors import MissingResourceId
-
 no_resource_id_required = ["BaseResource", "Discovery"]
+
 
 def only(*versions):
     def _only(method):
@@ -25,6 +25,7 @@ def only(*versions):
             return method(self, *args, **kwargs)
         return wrapper
     return _only
+
 
 class BaseResource(object):
     """Base class for resource objects."""
@@ -100,14 +101,14 @@ class BaseResource(object):
 
     def delete(self, uri=""):
         response = self._request_uri(uri, method='DELETE')
-        return bool(response['success'])
+        return bool(response.get('success', False))
 
     def post(self, uri="", return_bool=True, params={}, headers={}, all_args=[], required_args=[]):
         params = helpers.sanitize_params(params, all_args, required_args)
         response = self._request_uri(uri, method="POST", params=params, headers=headers)
 
         if return_bool:
-            return bool(response['success'])
+            return bool(response.get('success', False))
 
         return response
 
