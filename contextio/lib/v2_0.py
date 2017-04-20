@@ -196,7 +196,7 @@ class V2_0(Api):
         all_args = ["callback_url", "failure_notif_url", "filter_to", "filter_from", "filter_cc",
             "filter_subject", "filter_thread", "filter_new_important",
             "filter_file_name", "filter_folder_added", "filter_folder_removed",
-            "filter_to_domain", "filter_from_domain"
+            "filter_to_domain", "filter_from_domain", "receive_all_changes", "receive_historical"
         ]
 
         params = sanitize_params(params, all_args, req_args)
