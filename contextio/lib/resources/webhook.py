@@ -104,7 +104,7 @@ class WebHook(BaseResource):
         "filter_to", "filter_from", "filter_cc",
         "filter_subject", "filter_thread", "filter_new_important",
         "filter_file_name", "filter_folder_added", "filter_folder_removed",
-        "filter_to_domain", "filter_from_domain"]
+        "filter_to_domain", "filter_from_domain", "receive_historical", "receive_all_changes", "include_body", "body_type", "include_header"]
 
         return super(WebHook, self).post(params=params, all_args=all_args)
 
