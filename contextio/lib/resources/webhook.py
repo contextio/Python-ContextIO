@@ -61,7 +61,7 @@ class WebHook(BaseResource):
         "webhook_id", "filter_to", "filter_from", "filter_cc",
         "filter_subject", "filter_thread", "filter_new_important",
         "filter_file_name", "filter_folder_added", "filter_folder_removed",
-        "filter_to_domain", "filter_from_domain", "version"
+        "filter_to_domain", "filter_from_domain", "version", "receive_historical", "receive_all_changes", "include_body", "body_type", "include_header"
     ]
 
     def __init__(self, parent, defn):
@@ -92,10 +92,6 @@ class WebHook(BaseResource):
 
     def post(self, **params):
         """Change properties of a given WebHook.
-
-        Required Arguments:
-            active: integer - The active property of a WebHook allows you to
-                pause (set to 0) or resume (set to 1).
 
         Returns:
             Bool
