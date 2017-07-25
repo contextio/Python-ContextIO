@@ -72,7 +72,7 @@ class App(Api):
 
         Arguments: none
         """
-        return [obj for obj in self._request_uri("status_callback_url", params=params)]
+        return [obj for obj in self._request_uri("status_callback_url")]
 
     def delete_status_callback_url(self):
         """Delete your application status_callback_url
@@ -81,4 +81,4 @@ class App(Api):
 
         Arguments: none
         """
-        return super(self).delete()
+        return self._request_uri("status_callback_url", method="DELETE")

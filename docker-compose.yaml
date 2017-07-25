@@ -4,3 +4,7 @@ services:
     build: .
     volumes: 
       - $PWD:/opt/app
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - "TIMEZONE=UTC"
