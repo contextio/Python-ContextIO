@@ -20,9 +20,6 @@ class TestHelpers(unittest.TestCase):
             helpers.uncamelize(test_dict)
         )
 
-    def test_as_datetime_converts_UNIX_time_to_datetime_object(self):
-        self.assertEqual(datetime(2016, 3, 25, 16, 46, 4), helpers.as_datetime(1458942364))
-
     def test_as_bool_returns_false_if_0_or_False(self):
         self.assertFalse(helpers.as_bool(0))
         self.assertFalse(helpers.as_bool(False))
