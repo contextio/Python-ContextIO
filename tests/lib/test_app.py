@@ -59,7 +59,7 @@ class TestApp(unittest.TestCase):
         self.setUpApp()
 
         mock_request.return_value = [{"error": "no status_callback_url is set"}]
-        """delete the callback, expect to get error saying there is no callback"""
+        #delete the callback, expect to get error saying there is no callback
         self.api.delete_status_callback_url()
         response = self.api.get_status_callback_url()
 
