@@ -1,0 +1,10 @@
+version: "3"
+services:
+  tests:
+    build: .
+    command:
+    - nosetests
+    - -v
+    - -s
+    volumes:
+      - $PWD:/opt/app

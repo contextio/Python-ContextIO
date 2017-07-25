@@ -31,12 +31,6 @@ def as_bool(v):
         return False
     return True
 
-
-def as_datetime(v):
-    if isinstance(v, int):
-        return datetime.fromtimestamp(v)
-
-
 def process_person_info(parent, person_info, addresses):
     try:
         from contextIO2 import Contact
