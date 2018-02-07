@@ -10,7 +10,7 @@ The 2.0 version of the API will be partially deprecated starting on June 15th, 2
 
 [READ MORE HERE](https://blog.context.io/important-announcement-deprecation-of-2-0-api-8f73488a8c0e)
 
-##Dependencies
+## Dependencies
 If you plan on contributing to this project you will want to clone this repo and then use `pip` to install the dependencies.
 
     pip install -r requirements.txt
@@ -37,7 +37,7 @@ or
 ```$ easy_install six```
 or [Source](https://bitbucket.org/gutworth/six)
 
-##Installation
+## Installation
 You can use pip to install the latest release (**recommended**):
 
     pip install contextio
@@ -48,7 +48,7 @@ Check out / download the module from git, change directory to the folder with se
 
 **NOTE:** To install from source you may need to use *_sudo_*
 
-##Usage
+## Usage
 You first need to instantiate the main ContextIO object with your API credentials:
 
 	import contextio as c
@@ -100,7 +100,7 @@ You can use this same technique to populate sub-resource objects too.
 
 Notice how the Message class needs an Account object as a parent? That's because the library uses an object's ancestors to build the URL.
 
-##Tests
+## Tests
 
 There are now unit tests for this library.  If you would like to submit a PR against this project please ensure that you include the appropriate unit tests.
 
@@ -108,6 +108,6 @@ In order to run the tests make sure you install the `dev-dependencies`
 
     pip install -r dev-requirements.txt
 
-##Questions?
+## Questions?
 
 If you have any questions, don't hesitate to contact support@context.io
