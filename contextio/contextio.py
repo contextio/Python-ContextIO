@@ -10,4 +10,4 @@ def ContextIO(consumer_key, consumer_secret, **kwargs):
     elif kwargs.get("api_version") == "app":
     	return App(consumer_key, consumer_secret, **kwargs)
     else:
-        return V2_0(consumer_key, consumer_secret, **kwargs)
+        return Lite(consumer_key, consumer_secret, **kwargs)
