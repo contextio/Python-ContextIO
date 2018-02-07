@@ -8,7 +8,7 @@ Supports Python 2.7 (2.7.9 and up) and 3.
 ### NOTICE
 The 2.0 version of the API will be partially deprecated starting on June 15th, 2018, and will be completely deprecated on December 15th, 2018.
 
-[https://blog.context.io/important-announcement-deprecation-of-2-0-api-8f73488a8c0e](READ MORE HERE)
+[READ MORE HERE](https://blog.context.io/important-announcement-deprecation-of-2-0-api-8f73488a8c0e)
 
 ##Dependencies
 If you plan on contributing to this project you will want to clone this repo and then use `pip` to install the dependencies.
