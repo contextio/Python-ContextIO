@@ -179,7 +179,7 @@ class Api(object):
             return [ConnectToken(self, obj) for obj in self._request_uri('connect_tokens')]
 
     def post_connect_token(self, **params):
-        return self._request_uri("connect_tokens", method="POST", params=params)
+        return ConnectToken(self, self._request_uri("connect_tokens", method="POST", params=params))
 
     def get_discovery(self, **params):
         """Attempts to discover IMAP settings for a given email address.

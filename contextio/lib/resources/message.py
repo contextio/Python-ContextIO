@@ -461,6 +461,7 @@ class Message(BaseResource):
     def get_attachments(self, **params):
         all_args = ['delimiter']
         params = helpers.sanitize_params(params, all_args)
+
         self.attachments = self._request_uri('attachments', params=params)
 
     @only("lite")
