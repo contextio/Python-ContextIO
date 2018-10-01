@@ -117,6 +117,13 @@ class Folder(BaseResource):
                 the \Seen flag set, set to 0 to have the messages with that
                 flag unset (ie. list unread messages in the folder).
             limit: integer - The maximum number of results to return.
+            subject: string - Get messages whose subject matches this search 
+                string.
+            date_after: integer (unix time) or string mm/dd/yyyy - Only include
+                messages before a given timestamp. The value this filter is 
+                applied to is the Date: header of the message which refers to
+                the time the message is sent from the origin. Alternatively 
+                you may use a date string in the format of mm/dd/yyyy
             offset: integer - Start the list at this offset (zero-based).
 
         Returns:
@@ -125,7 +132,7 @@ class Folder(BaseResource):
         all_args = [
             "include_thread_size", "include_body",
             "body_type", "include_headers", "include_flags", "flag_seen",
-            "limit", "offset"
+            "limit", "offset", "subject", "date_after"
         ]
         params = helpers.sanitize_params(params, all_args)
 
