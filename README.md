@@ -1,4 +1,4 @@
-Context.IO API Python Library
+[DEPRECATED] - Context.IO API Python Library
 ==================================
 
 This is the python client library the Context.IO API (Lite and v2.0)!
